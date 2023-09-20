@@ -1,3 +1,6 @@
+// Ближайший ноль
+// https://contest.yandex.ru/contest/22450/run-report/90973652/
+
 const _readline = require("readline");
 
 const _reader = _readline.createInterface({
@@ -16,7 +19,7 @@ function toArray(str) {
   return str.split(" ").map((num) => Number(num));
 }
 
-function findRightZeroIndex(arr, current) {
+function findZeroIndex(arr, current) {
   for (let i = current; i < arr.length; i++) {
     if (arr[i] === 0) {
       return i;
@@ -26,29 +29,31 @@ function findRightZeroIndex(arr, current) {
 
 function getNearestZero(arr, n) {
   let leftZeroIndex = 0;
-  let rightZeroIndex = findRightZeroIndex(arr, 0);
+  let rightZeroIndex = 0;
   const distanceList = [];
+
+  if (arr[0] !== 0) {
+    leftZeroIndex = rightZeroIndex = findZeroIndex(arr, 1);
+  }
 
   for (let i = 0; i < n; i++) {
     if (i === rightZeroIndex) {
       leftZeroIndex = rightZeroIndex;
-      rightZeroIndex = findRightZeroIndex(arr, i + 1) ?? leftZeroIndex;
+      rightZeroIndex = findZeroIndex(arr, i + 1) ?? leftZeroIndex;
       distanceList.push(0);
       continue;
     }
-
-    if (leftZeroIndex === rightZeroIndex) {
-      distanceList.push(i - leftZeroIndex);
-      continue;
-    }
-    
-    const distanceLeft = rightZeroIndex - i;
-    const distanceRight = i - leftZeroIndex;
-
-    if (distanceRight < distanceLeft) {
-      distanceList.push(distanceRight);
+    const distanceLeft = i - leftZeroIndex;
+    const distanceRight = rightZeroIndex - i;
+    if (rightZeroIndex === leftZeroIndex) {  
+      const calc = distanceLeft > 0 ? distanceLeft : distanceRight;
+      distanceList.push(calc);
     } else {
-      distanceList.push(distanceLeft);
+      if (distanceRight < distanceLeft) {
+        distanceList.push(distanceRight);
+      } else {
+        distanceList.push(distanceLeft);
+      }
     }
   }
   return distanceList;
