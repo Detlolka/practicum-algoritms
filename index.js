@@ -14,4 +14,5 @@ import "./src/sprint_1_tasks/task_L";
 
 // СПРИНТ 1 ФИНАЛЬНЫЕ
 import "./src/sprint_1_final/task_A";
+import "./src/sprint_1_final/task_B";
 
