@@ -1,0 +1,11 @@
+{
+  "name": "practicum_alogrimts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sprint_1_task_1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT"
+}
