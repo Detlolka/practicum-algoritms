@@ -19,5 +19,6 @@ import "./src/sprint_1_final/task_B";
 // СПРИНТ 2 ТРЕНИРОВОЧНЫЕ
 import "./src/sprint_2_tasks/task_B";
 import "./src/sprint_2_tasks/task_C";
+import "./src/sprint_2_tasks/task_D";
 
 

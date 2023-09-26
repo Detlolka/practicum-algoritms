@@ -27,4 +27,5 @@ function test() {
     node3
     */
 }
-test()
+
+test();
