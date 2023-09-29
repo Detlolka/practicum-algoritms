@@ -21,5 +21,7 @@ import "./src/sprint_2_tasks/task_B";
 import "./src/sprint_2_tasks/task_C";
 import "./src/sprint_2_tasks/task_D";
 import "./src/sprint_2_tasks/task_E";
+import "./src/sprint_2_tasks/task_F";
+import "./src/sprint_2_tasks/task_G";
 
 
