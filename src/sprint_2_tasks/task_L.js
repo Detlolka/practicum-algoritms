@@ -19,7 +19,7 @@ function fibonachi_module(number, k) {
   if (number <= 1) {
     return 1;
   }
-  for (let i = 0; i < number - 1; i++) {
+  for (let i = 1; i < number; i++) {
     const temp = fib_1;
     fib_1 = (fib_0 + fib_1) % mod;
     fib_0 = temp;
