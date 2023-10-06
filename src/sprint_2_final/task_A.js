@@ -1,4 +1,6 @@
 /*
+https://contest.yandex.ru/contest/22781/run-report/91902471/
+
 -- ПРИНЦИП РАБОТЫ --
 Я реализовал дек на кольцевом буфере способном двигаться в обе стороны, при добавлении элемента 
 в начало очереди, head двигается против часовой стрелки, а при удалении по часовой, tail работает по
@@ -37,8 +39,8 @@ class Deck {
     this.size = 0;
   }
 
-  push_front(value) {
-    if (this.is_full()) {
+  pushFront(value) {
+    if (this.isFull()) {
       return "error";
     }
     this.head = this.head === 0 ? this.maxSize - 1 : this.head - 1;
@@ -46,8 +48,8 @@ class Deck {
     this.size += 1;
   }
 
-  push_back(value) {
-    if (this.is_full()) {
+  pushBack(value) {
+    if (this.isFull()) {
       return "error";
     }
     this.items[this.tail] = value;
@@ -55,8 +57,8 @@ class Deck {
     this.size += 1;
   }
 
-  pop_front() {
-    if (this.is_empty()) {
+  popFront() {
+    if (this.isEmpty()) {
       return "error";
     }
     const temp = this.items[this.head];
@@ -66,8 +68,8 @@ class Deck {
     return temp;
   }
 
-  pop_back() {
-    if (this.is_empty()) {
+  popBack() {
+    if (this.isEmpty()) {
       return "error";
     }
     this.tail = this.tail === 0 ? this.maxSize - 1 : this.tail - 1;
@@ -77,11 +79,11 @@ class Deck {
     return temp;
   }
 
-  is_full() {
+  isFull() {
     return this.size === this.maxSize;
   }
 
-  is_empty() {
+  isEmpty() {
     return this.size === 0;
   }
 }
@@ -90,18 +92,35 @@ function toArray(str) {
   return str.split(" ");
 }
 
+function methodsDictionary(method) {
+  switch(method) {
+    case "push_front":
+      return "pushFront";
+    case "push_back":
+      return "pushBack";
+    case "pop_front":
+      return "popFront";
+    case "pop_back":
+      return "popBack";
+    default:
+      return undefined;    
+  }
+}
+
 function getResults(arr, count, maxSize) {
   let result = "";
   const stackList = new Deck(maxSize);
   for (let i = 0; i < count; i++) {
     const temp = arr[i];
     if (temp.length === 1) {
-      const calc = stackList[temp]();
+      const method = methodsDictionary(temp[0]);
+      const calc = stackList[method]();
       if (calc != undefined) {
         result += `${calc}\n`;
       }
     } else {
-      const calc = stackList[temp[0]](Number(temp[1]));
+      const method = methodsDictionary(temp[0]);
+      const calc = stackList[method](Number(temp[1]));
       if (calc != undefined) {
         result += `${calc}\n`;
       }
