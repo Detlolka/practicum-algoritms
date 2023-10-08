@@ -12,15 +12,15 @@ _reader.on('line', line => {
 
 process.stdin.on('end', solve);
 
-function recouse_fibonachi(number) {
+function recourse_fibonachi(number) {
     if (number === 0 || number === 1) {
         return 1;
     }
-    return recouse_fibonachi(number - 1) + recouse_fibonachi(number - 2);
+    return recourse_fibonachi(number - 1) + recourse_fibonachi(number - 2);
 }
 
 function solve() {
     const num = Number(_inputLines[0]);
-    const result = recouse_fibonachi(num);
+    const result = recourse_fibonachi(num);
     console.log(result);
 } 
