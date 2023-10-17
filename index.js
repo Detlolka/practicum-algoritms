@@ -38,6 +38,7 @@ import "./src/sprint_2_final/task_B";
 import "./src/sprint_3_tasks/task_A";
 import "./src/sprint_3_tasks/task_B";
 import "./src/sprint_3_tasks/task_C";
+import "./src/sprint_3_tasks/task_D";
 import "./src/sprint_3_tasks/task_G";
 import "./src/sprint_3_tasks/task_H";
 import "./src/sprint_3_tasks/task_J";
