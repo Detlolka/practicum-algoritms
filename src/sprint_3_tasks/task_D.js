@@ -12,24 +12,28 @@ _reader.on('line', line => {
 
 process.stdin.on('end', solve);
 
-function calcCookiesCount(arrOne, arrTwo) {
+function calcCookiesCount(child, cookies) {
     let count = 0;
-    for (let i = 0; i < arrOne.length; i++) {
-        for (let j = 0; j < arrTwo.length; j++) {
-            if (arrTwo[j] !== null && Number(arrOne[i]) >= Number(arrTwo[j])) {
+    let j = 0;
+    for (let i = 0; i < child.length; i++) {
+        while (j < cookies.length) {
+            if (cookies[j] >= child[i]) {
                 count += 1;
-                arrTwo[j] = null;
+                j += 1;
                 break;
             }
+            j += 1;
         }
     }
     console.log(count);
 }
 
+function toArraySort(str) {
+    return str.split(" ").map((el) => Number(el)).sort((a, b) => a - b);
+}
+
 function solve() {
-    const childCount = Number(_inputLines[0]);
-    const childFactor = _inputLines[1].split(" ");
-    const cookiesCount = Number(_inputLines[2]);
-    const cookies = _inputLines[3].split(" ");
-    childCount > cookiesCount ? calcCookiesCount(cookies, childFactor) : calcCookiesCount(childFactor, cookies);
+    const child = toArraySort(_inputLines[1]);
+    const cookies = toArraySort(_inputLines[3]);
+    calcCookiesCount(child, cookies);
 } 
