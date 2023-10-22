@@ -13,5 +13,4 @@ _reader.on('line', line => {
 process.stdin.on('end', solve);
 
 function solve() {
-
 } 

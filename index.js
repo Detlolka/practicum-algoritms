@@ -45,7 +45,11 @@ import "./src/sprint_3_tasks/task_G";
 import "./src/sprint_3_tasks/task_H";
 import "./src/sprint_3_tasks/task_I";
 import "./src/sprint_3_tasks/task_J";
+import "./src/sprint_3_tasks/task_K";
 import "./src/sprint_3_tasks/task_L";
+import "./src/sprint_3_tasks/task_M";
 
+// СПРИНТ 3 ФИНАЛЬНЫЕ
+import "./src/sprint_3_final/task_A";
 
 
