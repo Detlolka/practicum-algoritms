@@ -51,5 +51,6 @@ import "./src/sprint_3_tasks/task_M";
 
 // СПРИНТ 3 ФИНАЛЬНЫЕ
 import "./src/sprint_3_final/task_A";
+import "./src/sprint_3_final/task_B";
 
 
