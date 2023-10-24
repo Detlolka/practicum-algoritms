@@ -53,4 +53,6 @@ import "./src/sprint_3_tasks/task_M";
 import "./src/sprint_3_final/task_A";
 import "./src/sprint_3_final/task_B";
 
+// СПРИНТ 4 ТРЕНИРОВОЧНЫЕ
+import "./src/sprint_4_tasks/task_D";
 

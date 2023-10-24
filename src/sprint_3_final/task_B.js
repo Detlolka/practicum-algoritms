@@ -1,9 +1,9 @@
 /* 
-https://contest.yandex.ru/contest/23815/run-report/94312828/
+https://contest.yandex.ru/contest/23815/run-report/94311975/
 
 За основу брался алгоритм быстрой сортировки с доработанными под требования задачи компрататором,
-так же была передана функция нахождения опорной точки, для расходования памяти O(1). Для удобства данные
-пользователь преобразовал в классы.
+так же была передана функция нахождения опорной точки, для расходования памяти O(1). Пробовал для удобство делать 
+через класс, но не прошел по Tl, возможно из за еще одного прохождения по массиву. 
 */
 
 const _readline = require("readline");
@@ -34,7 +34,6 @@ function swapPlayers(array, pl1, pl2) {
     const swap = array[pl1];
     array[pl1] = array[pl2];
     array[pl2] = swap;
-    return array;
 }
 
 function compratator(one, two) {
@@ -47,31 +46,39 @@ function compratator(one, two) {
     return one.login < two.login;
 }
 
-function getPivot(array, start, end) {
-    const pivot = array[end];
+function getPivot(arr, left, right) {
+    const pivot = arr[Math.floor(Math.random() * (right - left) + left)];
+    let i = left;
+    let j = right;
 
-    let index = start - 1;
-
-    for (let i = start; i < end; i++) {
-        if (compratator(array[i], pivot)) {
-            swapPlayers(array, ++index, i);
+    while (i <= j) {
+        while (compratator(arr[i], pivot)) {
+            i++;
+        }
+        while (compratator(pivot, arr[j])) {
+            j--;
+        }
+        if (i <= j) {
+            swapPlayers(arr, i, j);
+            i++;
+            j--;
         }
     }
-
-    swapPlayers(array, ++index, end);
-
-    return index;
+    return i;
 }
 
-function quickSort(array, start, end) {
-  if (start >= end) {
-    return;
-  }
 
-  const pivot = getPivot(array, start, end);
-
-  quickSort(array, start, pivot - 1);
-  quickSort(array, pivot + 1, end);
+function quickSort(arr, left = 0, right = arr.length - 1) {
+    if (arr.length > 1) {
+        const index = getPivot(arr, left, right);
+        if (left < index - 1) {
+            quickSort(arr, left, index - 1);
+        }
+        if (index < right) {
+            quickSort(arr, index, right);
+        }
+    }
+    return arr;
 }
 
 function solve() {
@@ -84,6 +91,5 @@ function solve() {
     (el) => new Player(el[0], el[1], el[2])
   );
   quickSort(transformPlayers, 0, transformPlayers.length - 1);
-  console.log(transformPlayers)
   console.log(transformPlayers.map((el) => el.login).join("\n"));
 }
